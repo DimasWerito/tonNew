@@ -1,121 +1,131 @@
-const btnPopUpForm = document.querySelector(".popup__body");
-const popUpRow = document.querySelector(".popup__row");
-const oderBody = document.querySelector(".oder__body");
-const oderRow = document.querySelector(".oder__row");
-const validateInputs = document.querySelectorAll(".validate");
+document.addEventListener("DOMContentLoaded", () => {
+  const btnPopUpForm = document.querySelector(".popup__body");
+  const popUpRow = document.querySelector(".popup__row");
+  const oderBody = document.querySelector(".oder__body");
+  const oderRow = document.querySelector(".oder__row");
+  const validateInputs = document.querySelectorAll(".validate");
 
-function onClickOpenForm() {
-  const btnTryNow = document.querySelectorAll(".btn-try-now");
-  for (let i = 0; i < btnTryNow.length; i++) {
-    btnTryNow[i].addEventListener("click", (event) => {
-      let finalSum = 0;
-      const intervalId = showTostMessage(sum => finalSum = sum);
-      setTimeout(() => {
-        clearInterval(intervalId);
-        const popupProfit = document.querySelector(".popup__profit");
-        popupProfit.textContent = `Earn up to ${finalSum}$`;
-        popUpRow.classList.add("isActive");
-        btnPopUpForm.classList.add("isActive");
-      }, 2000)
+  function onClickOpenForm() {
+    const btnTryNow = document.querySelectorAll(".btn-try-now");
+    
+    btnTryNow.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        let finalSum = 0;
+        const intervalId = showToastMessage((sum) => (finalSum = sum));
+        
+        setTimeout(() => {
+          displayProfitAndTogglePopup(intervalId, finalSum);
+        }, 2000);
+      });
     });
   }
-}
-onClickOpenForm();
 
-function onClickCloseForm() {
-  const btnCloseForm = document.querySelector(".popup__close-form");
-  btnCloseForm.addEventListener("click", (event) => {
-    removeActiveClassFromPopUpBtn();
+  function displayProfitAndTogglePopup(intervalId, finalSum) {
+    clearInterval(intervalId);
+    document.querySelector(".popup__profit").textContent = `Earn up to ${finalSum}$`;
+    togglePopup(true);
+  }
+
+  function onClickCloseForm() {
+    document.querySelector(".popup__close-form").addEventListener("click", () => {
+      togglePopup(false);
+      resetValidationInputs();
+    });
+  }
+
+  function onClickSendForm() {
+    document.querySelector(".popup__btn").addEventListener("click", (event) => {
+      event.preventDefault();
+      if (validateForm()) {
+        notifySuccessSendForm();
+      }
+    });
+  }
+
+  function onClickOderClose() {
+    document.querySelector(".oder__close").addEventListener("click", () => {
+      toggleOder(false);
+    });
+  }
+
+  function togglePopup(isActive) {
+    popUpRow.classList.toggle("isActive", isActive);
+    btnPopUpForm.classList.toggle("isActive", isActive);
+  }
+
+  function toggleOder(isActive) {
+    oderBody.classList.toggle("isActive", isActive);
+    oderRow.classList.toggle("isActive", isActive);
+  }
+
+  function resetValidationInputs() {
     validateInputs.forEach((input) => {
       input.classList.remove("error");
       input.value = "";
     });
-  });
-}
-onClickCloseForm();
-
-function validateForm() {
-  const pattern = {
-    name: /^[a-zA-Zа-яА-Я]{3,}$/,
-    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    phone: /^\+?[\d\s-]{10,15}$/,
-  };
-  let isValid = true;
-
-  const validateField = (field) => {
-    if (pattern[field.name] && !pattern[field.name].test(field.value)) {
-      field.classList.add("error");
-      isValid = false;
-    } else {
-      field.classList.remove("error");
-    }
-  };
-
-  for (let i = 0; i < validateInputs.length; i++) {
-    validateInputs[i].addEventListener("blur", (event) =>
-      validateField(event.target)
-    );
-    validateInputs[i].addEventListener("input", (event) =>
-      validateField(event.target)
-    );
   }
-  validateInputs.forEach((input) => validateField(input));
 
-  return isValid;
-}
+  function validateForm() {
+    const patterns = {
+      name: /^[a-zA-Zа-яА-Я]{3,}$/,
+      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      phone: /^\+?[\d\s-]{10,15}$/,
+    };
 
-function onClickSendForm() {
-  const btnSendForm = document.querySelector(".popup__btn");
-  btnSendForm.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (validateForm()) {
-      // TODO: logic sending form
-      notifySuccessSendFrom();
-    }
-  });
-}
-onClickSendForm();
+    let isValid = true;
 
-function notifySuccessSendFrom() {
-  removeActiveClassFromPopUpBtn();
-  oderBody.classList.add("isActive");
-  oderRow.classList.add("isActive");
-}
+    const validateField = (field) => {
+      const pattern = patterns[field.name];
+      if (pattern && !pattern.test(field.value)) {
+        field.classList.add("error");
+        isValid = false;
+      } else {
+        field.classList.remove("error");
+      }
+    };
 
-function removeActiveClassFromPopUpBtn() {
-  popUpRow.classList.remove("isActive");
-  btnPopUpForm.classList.remove("isActive");
-}
+    validateInputs.forEach((input) => {
+      input.addEventListener("blur", () => validateField(input));
+      input.addEventListener("input", () => validateField(input));
+      validateField(input);
+    });
 
-function onClickOderClose() {
-  const oderClose = document.querySelector(".oder__close");
-  oderClose.addEventListener("click", (event) => {
-    oderBody.classList.remove("isActive");
-    oderRow.classList.remove("isActive");
-  });
-}
-onClickOderClose();
+    return isValid;
+  }
 
-function showTostMessage(sumCallback) {
-  let sum = 0;
-  const intervalId = setInterval(() => {
-    let randomInteger = Math.floor(Math.random() * 873);
-    sum += randomInteger;
-    sumCallback(sum);
-    Toastify({
-      text: `Your current profit ${randomInteger}$`,
-      duration: 1000,
-      newWindow: true,
-      className: "toast-message",
-      close: true,
-      gravity: "top",
-      position: "center",
-      stopOnFocus: true,
-      style: {
-        background: 'green',
-      },
-    }).showToast();
-  }, 500);
+  function notifySuccessSendForm() {
+    togglePopup(false);
+    toggleOder(true);
+  }
 
-  return intervalId;
-}
+  function showToastMessage(sumCallback) {
+    let sum = 0;
+    const randomNumber = 873;
+    const intervalId = setInterval(() => {
+      const randomInteger = Math.floor(Math.random() * randomNumber);
+      sum += randomInteger;
+      sumCallback(sum);
+
+      Toastify({
+        text: `Your current profit ${randomInteger}$`,
+        duration: 1000,
+        newWindow: true,
+        className: "toast-message",
+        close: true,
+        gravity: "top",
+        position: "center",
+        stopOnFocus: true,
+        style: {
+          background: 'green',
+        },
+      }).showToast();
+    }, 500);
+
+    return intervalId;
+  }
+
+  onClickOpenForm();
+  onClickCloseForm();
+  onClickSendForm();
+  onClickOderClose();
+});
