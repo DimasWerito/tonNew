@@ -166,13 +166,17 @@ h6 {
   cursor: pointer;
 }
 
-.btn-try-now > p {
+.btn-try-now > span {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 24px;
   color: var(--blue-primary-blue);
   white-space: nowrap;
   margin-left: 8px;
+}
+
+.btn-try-now,.white {
+  color: var(--gray-gray-0) !important;
 }
 
 .header__menu {
@@ -546,7 +550,7 @@ h6 {
   background: var(--gray-gray-0);
   z-index: 10;
   max-width: 712px;
-  height: 572px;
+  height: 652px;
   border-radius: 21px;
   -webkit-transform: perspective(600px) translate(0, -100%) rotateX(45deg);
   transform: perspective(600px) translate(0, -100%) rotateX(45deg);
@@ -563,7 +567,7 @@ h6 {
 .popup__title {
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 48px;
+  font-size: 37px;
   line-height: 108%;
   color: var(--gray-gray-900);
   margin-bottom: 16px;
@@ -587,7 +591,7 @@ h6 {
   position: absolute;
   right: 10px;
   top: 5px;
-  font-size: 24px;
+  font-size: 22px;
   background: var(--gray-gray-0);
   width: 30px;
   height: 30px;
@@ -639,7 +643,7 @@ h6 {
   margin-top: 32px;
 }
 
-.popup__btn > p {
+.popup__btn > span {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 24px;
@@ -746,6 +750,31 @@ h6 {
   font-size: 24px;
   color: var(--gray-gray-0);
 }
+
+.toast-message {
+  font-size: 30px;
+}
+
+.popup__text {
+  font-size: 18px;
+  color: var(--gray-gray-600);
+  padding-top: 10px;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+}
+
+.popup__flags {
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.popup__flags > img {
+  width: 80px;
+}
+
 /* #endregion */
 
 @media (max-width: 1440px) {

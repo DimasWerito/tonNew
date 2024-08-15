@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function onClickOpenForm() {
     const btnTryNow = document.querySelectorAll(".btn-try-now");
-    
     btnTryNow.forEach((btn) => {
       btn.addEventListener("click", () => {
         let finalSum = 0;
@@ -15,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         setTimeout(() => {
           displayProfitAndTogglePopup(intervalId, finalSum);
-        }, 2000);
+        }, 4000);
       });
     });
   }
 
   function displayProfitAndTogglePopup(intervalId, finalSum) {
     clearInterval(intervalId);
-    document.querySelector(".popup__profit").textContent = `Earn up to ${finalSum}$`;
+    document.querySelector(".popup__profit").textContent = `Your profit could be ${finalSum}$`;
     togglePopup(true);
   }
 
@@ -100,7 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showToastMessage(sumCallback) {
     let sum = 0;
-    const randomNumber = 873;
+    const randomNumber = 99;
+    const chart  = document.getElementById("chart");
+    chart.scrollIntoView({ block: "center", behavior: "smooth" });
     const intervalId = setInterval(() => {
       const randomInteger = Math.floor(Math.random() * randomNumber);
       sum += randomInteger;
@@ -111,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 1000,
         newWindow: true,
         className: "toast-message",
-        close: true,
+        close: false,
         gravity: "top",
         position: "center",
         stopOnFocus: true,
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
           background: 'green',
         },
       }).showToast();
-    }, 500);
+    }, 700);
 
     return intervalId;
   }
