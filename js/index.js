@@ -2,8 +2,8 @@ var barCount = 20;
 var initialDateStr = "01 Apr 2017 00:00 Z";
 
 var ctx = document.getElementById("chart").getContext("2d");
-ctx.canvas.width = 250;
-ctx.canvas.height = 150;
+ctx.canvas.width = 1400;
+ctx.canvas.height = 750;
 
 var barData = getRandomData(initialDateStr, barCount);
 function lineData() {
@@ -72,5 +72,3 @@ function getRandomData(dateStr, count) {
 }
 
 window.setInterval(randomUpdate, 600);
-
-
