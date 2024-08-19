@@ -12,7 +12,7 @@ function lineData() {
   });
 }
 
-var chart = new Chart(ctx, {
+const chart = new Chart(ctx, {
   type: "candlestick",
   data: {
     datasets: [
@@ -22,6 +22,10 @@ var chart = new Chart(ctx, {
       },
     ],
   },
+  options: {
+    responsive: true,           
+    maintainAspectRatio: false,
+  }
 });
 
 function randomUpdate() {
