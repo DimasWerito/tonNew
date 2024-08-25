@@ -664,7 +664,9 @@ h6 {
   margin-left: 8px;
 }
 /* #endregion */
+
 .oder__body {
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -723,6 +725,11 @@ h6 {
 .oder__icon {
   display: flex;
   justify-content: center;
+}
+
+.oder__icon > svg {
+  width: 180px;
+  height: 180px;
 }
 
 .oder__text {
@@ -926,6 +933,83 @@ h6 {
     margin-top: 20px;
   }
   
+  .popup__row {
+    padding: px;
+    max-width: 347px;
+    height: 550px;
+  }
+
+  .popup__title {
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+
+  .popup__item {
+    width: 315px;
+    height: 68px;
+  }
+
+.popup__input {
+  width: 280px;
+  height: 45px;
+  padding: 14px 16px;
+}
+
+.popup__btn {
+  border-radius: 56px;
+  padding: 12px 18px;
+  width: 280px;
+  height: 44px;
+  margin-top: 20px;
+}
+
+.popup__text {
+  font-size: 13px;
+}
+
+.popup__flags > img {
+  width: 40px;
+}
+
+.popup__item > p {
+  font-size: 16px;
+}
+
+.oder__row {
+  border-radius: 20px;
+  padding: 32px;
+  width: 320px;
+  height: 370px;
+}
+
+.oder__icon > svg {
+  width: 100px;
+  height: 100px;
+}
+
+.oder__text {
+  margin: 20px 0 20px 0;
+}
+
+.oder__text > h3 {
+  font-size: 24px;
+}
+
+.oder__text > p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.oder__close {
+  width: 260px;
+  height: 65px;
+}
+
+.oder__close > p {
+  font-size: 16px;
+}
+
 }
 
 @media (max-width: 480px) {
