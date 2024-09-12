@@ -4,6 +4,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const oderBody = document.querySelector(".oder__body");
   const oderRow = document.querySelector(".oder__row");
   const validateInputs = document.querySelectorAll(".validate");
+  const playButton = document.querySelector('.trading__video-play-btn');
+  const video = document.getElementById("video");
+  const videoText = document.querySelector(".trading__video-text");
+
+  function playVideo() {
+    playButton.addEventListener('click', () => {
+      if (video.paused) {        
+          video.play();
+          playButton.classList.add('hidden');
+          videoText.classList.add('hidden');
+      }
+  });
+  }
+  playVideo();
+
+  function pauseVideo() {
+    video.addEventListener('pause', () => {
+      playButton.classList.remove('hidden');
+      videoText.classList.remove('hidden');
+    });
+  }
+  pauseVideo();
+
+  function endedVideo() {
+    video.addEventListener('ended', () => {
+      playButton.classList.remove('hidden');
+      videoText.classList.remove('hidden');
+    });
+  }
+  endedVideo();
 
   function onClickOpenForm() {
     const btnTryNow = document.querySelectorAll(".btn-try-now");
@@ -11,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => {
         let finalSum = 0;
         const intervalId = showToastMessage((sum) => (finalSum = sum));
-        
+
         setTimeout(() => {
           displayProfitAndTogglePopup(intervalId, finalSum);
         }, 4000);
@@ -21,14 +51,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayProfitAndTogglePopup(intervalId, finalSum) {
     clearInterval(intervalId);
-    document.querySelector(".popup__profit").textContent = `Your profit could be ${finalSum}$`;
+    document.querySelector(
+      ".popup__profit"
+    ).textContent = `Your profit could be ${finalSum}$`;
     togglePopup(true);
   }
 
   function onClickCloseForm() {
-    document.querySelector(".popup__close-form").addEventListener("click", () => {
-      togglePopup(false);
-      resetValidationInputs();
+    document
+      .querySelector(".popup__close-form")
+      .addEventListener("click", () => {
+        togglePopup(false);
+        resetValidationInputs();
+      });
+    document.addEventListener("click", (event) => {
+      const content = document.querySelector(".popup__content");
+      if (
+        btnPopUpForm.classList.contains("isActive") &&
+        content.classList.contains(event.target.className)
+      ) {
+        togglePopup(false);
+        resetValidationInputs();
+      }
     });
   }
 
@@ -100,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showToastMessage(sumCallback) {
     let sum = 0;
     const randomNumber = 99;
-    const chart  = document.getElementById("chart");
+    const chart = document.getElementById("chart");
     chart.scrollIntoView({ block: "center", behavior: "smooth" });
     const intervalId = setInterval(() => {
       const randomInteger = Math.floor(Math.random() * randomNumber);
@@ -117,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         position: "center",
         stopOnFocus: true,
         style: {
-          background: 'green',
+          background: "green",
         },
       }).showToast();
     }, 700);

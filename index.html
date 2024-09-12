@@ -60,7 +60,7 @@
           <div class="popup__body">
             <div class="popup__content">
               <div class="popup__row">
-                <button class="popup__close-form">&#10008;</button>
+                <button class="popup__close-form">X</button>
                 <h2 class="popup__title">
                   Join to us. <span class="popup__profit"></span>
                 </h2>
@@ -229,7 +229,14 @@
               </div>
             </div>
             <div class="trading__video">
-              <video controls>
+              <div class="video-placeholder"></div>
+              <p class="trading__video-text">About TON trading bot</p>
+              <button class="trading__video-play-btn">
+                <div class="circle">
+                  <div class="play-button"></div>
+                </div>
+              </button>
+              <video id="video" controls>
                 <source src="./video/toncoin_compressed.mp4" type="video/mp4" />
                 About TON trading bot
               </video>
