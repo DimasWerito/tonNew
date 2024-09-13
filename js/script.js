@@ -4,33 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const oderBody = document.querySelector(".oder__body");
   const oderRow = document.querySelector(".oder__row");
   const validateInputs = document.querySelectorAll(".validate");
-  const playButton = document.querySelector('.trading__video-play-btn');
+  const playButton = document.querySelector(".trading__video-play-btn");
   const video = document.getElementById("video");
   const videoText = document.querySelector(".trading__video-text");
 
   function playVideo() {
-    playButton.addEventListener('click', () => {
-      if (video.paused) {        
-          video.play();
-          playButton.classList.add('hidden');
-          videoText.classList.add('hidden');
+    playButton.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        playButton.classList.add("hidden");
+        videoText.classList.add("hidden");
       }
-  });
+    });
   }
   playVideo();
 
   function pauseVideo() {
-    video.addEventListener('pause', () => {
-      playButton.classList.remove('hidden');
-      videoText.classList.remove('hidden');
+    video.addEventListener("pause", () => {
+      playButton.classList.remove("hidden");
+      videoText.classList.remove("hidden");
     });
   }
   pauseVideo();
 
   function endedVideo() {
-    video.addEventListener('ended', () => {
-      playButton.classList.remove('hidden');
-      videoText.classList.remove('hidden');
+    video.addEventListener("ended", () => {
+      playButton.classList.remove("hidden");
+      videoText.classList.remove("hidden");
     });
   }
   endedVideo();

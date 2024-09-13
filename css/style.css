@@ -328,6 +328,8 @@ h6 {
   max-height: 492px;
   position: relative;
   margin: 0 auto;
+  width: 90%;
+  height: auto;
 }
 
 .trading__video-text {
