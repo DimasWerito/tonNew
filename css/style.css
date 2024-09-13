@@ -205,7 +205,7 @@ h6 {
 
 .header__list > li > a {
   font-family: var(--font-family);
-  font-weight: 500;
+  font-weight: 700;
   font-size: 20px;
   line-height: 140%;
   color: var(--gray-gray-600);
@@ -872,7 +872,7 @@ h6 {
 
 .chart__text > p {
   font-size: 20px;
-  color: var(--gray-gray-900);
+  color: #fff;
   font-family: var(--font-family);
   letter-spacing: 0.8px;
   text-align: center;
@@ -933,7 +933,7 @@ h6 {
 }
 
 @media (max-width: 768px) {
-  .header__logo_button {
+  .header__logo .logo {
     display: none;
   }
 
@@ -988,13 +988,14 @@ h6 {
   .chart__text > p {
     font-size: 14px;
   }
-  
+
   .footer__item-padding {
     padding: 0 23px;
   }
 
   .footer__list > li > a {
     font-size: 14px;
+    font-weight: 700;
     line-height: 143%;
   }
 
@@ -1007,7 +1008,7 @@ h6 {
     margin: 0 auto;
     margin-top: 20px;
   }
-  
+
   .popup__row {
     padding: px;
     max-width: 347px;
@@ -1025,79 +1026,79 @@ h6 {
     height: 68px;
   }
 
-.popup__input {
-  width: 280px;
-  height: 45px;
-  padding: 14px 16px;
-}
+  .popup__input {
+    width: 280px;
+    height: 45px;
+    padding: 14px 16px;
+  }
 
-.popup__btn {
-  border-radius: 56px;
-  padding: 12px 18px;
-  width: 280px;
-  height: 44px;
-  margin-top: 20px;
-}
+  .popup__btn {
+    border-radius: 56px;
+    padding: 12px 18px;
+    width: 280px;
+    height: 44px;
+    margin-top: 20px;
+  }
 
-.popup__text {
-  font-size: 13px;
-}
+  .popup__text {
+    font-size: 13px;
+  }
 
-.popup__flags > img {
-  width: 40px;
-}
+  .popup__flags > img {
+    width: 40px;
+  }
 
-.popup__item > p {
-  font-size: 16px;
-}
+  .popup__item > p {
+    font-size: 16px;
+  }
 
-.oder__row {
-  border-radius: 20px;
-  padding: 32px;
-  width: 320px;
-  height: 370px;
-}
+  .oder__row {
+    border-radius: 20px;
+    padding: 32px;
+    width: 320px;
+    height: 370px;
+  }
 
-.oder__icon > svg {
-  width: 100px;
-  height: 100px;
-}
+  .oder__icon > svg {
+    width: 100px;
+    height: 100px;
+  }
 
-.oder__text {
-  margin: 20px 0 20px 0;
-}
+  .oder__text {
+    margin: 20px 0 20px 0;
+  }
 
-.oder__text > h3 {
-  font-size: 24px;
-}
+  .oder__text > h3 {
+    font-size: 24px;
+  }
 
-.oder__text > p {
-  font-size: 18px;
-  margin-top: 10px;
-}
+  .oder__text > p {
+    font-size: 18px;
+    margin-top: 10px;
+  }
 
-.oder__close {
-  width: 260px;
-  height: 65px;
-}
+  .oder__close {
+    width: 260px;
+    height: 65px;
+  }
 
-.oder__close > p {
-  font-size: 16px;
-}
+  .oder__close > p {
+    font-size: 16px;
+  }
 
-.circle {
-  width: 80px;
-  height: 80px;
-}
+  .circle {
+    width: 80px;
+    height: 80px;
+  }
 
-.play-button {
-  margin-left: 10px;
-}
+  .play-button {
+    margin-left: 10px;
+  }
 
-.trading__video-text {
-  font-size: 17px;
-  top: 20px;
-}
+  .trading__video-text {
+    font-size: 17px;
+    top: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1141,16 +1142,15 @@ h6 {
   .trading__follower:nth-child(2) {
     margin-left: -23px;
   }
-  
+
   .trading__follower:nth-child(3) {
     margin-left: -27px;
   }
 
   .trading__users_count {
     font-size: 14px;
-
   }
-  
+
   .trading__users {
     font-size: 12px;
   }
