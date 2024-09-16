@@ -1107,7 +1107,7 @@ h6 {
     top: 20px;
   }
 
-  .btn-try-now,.hidden {
+  .btn-try-now.hidden {
     display: none;
   }
 
