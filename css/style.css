@@ -144,7 +144,7 @@ h6 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 72px;
+  margin-bottom: 52px;
 }
 
 .scaled-svg {
@@ -192,6 +192,7 @@ h6 {
 .header__menu {
   display: flex;
   max-width: 438px;
+  margin: 10px;
 }
 
 .header__list {
@@ -932,6 +933,10 @@ h6 {
   .start__title-text {
     text-align: center;
   }
+
+  .header__list {
+    gap: 32px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1098,8 +1103,16 @@ h6 {
   }
 
   .trading__video-text {
-    font-size: 17px;
+    font-size: 16px;
     top: 20px;
+  }
+
+  .btn-try-now,.hidden {
+    display: none;
+  }
+
+  .trading__title {
+    font-size: 65px;
   }
 }
 
@@ -1158,7 +1171,7 @@ h6 {
   }
 
   .header__list > li > a {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .header__row {
@@ -1167,6 +1180,16 @@ h6 {
 
   .trading__row {
     margin-bottom: 185px;
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .trading__video-text {
+    font-size: 14px;
+    top: 10px;
   }
 }
 
@@ -1177,5 +1200,9 @@ h6 {
 
   .start__item-text {
     margin-bottom: 100px;
+  }
+
+  .header__list {
+    gap: 24px;
   }
 }
